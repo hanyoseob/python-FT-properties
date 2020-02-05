@@ -20,7 +20,7 @@ For any complex numbers $a \in \mathbb{C}$ and $b \in \mathbb{C}$,
 > $\hat{h}(\xi) = a \cdot \hat{f}(\xi) + b \cdot \hat{g}(\xi)$
 
 ### Execution
-        >> demo_fourier_properties_1_linearity.m
+        $ python demo_fourier_properties_1_linearity.py
 
 ### Results
 ![alt text](img/linearity.png "FT properties: (1) Linearity")
@@ -37,7 +37,7 @@ For any real number $x_0 \in \mathbb{R}$,
 > $\hat{h}(\xi) = e^{-2 \pi i x_0 \xi}\hat{f}(\xi)$
 
 ### Execution
-        >> demo_fourier_properties_2_shift_in_spatial_domain.m
+        $ python demo_fourier_properties_2_shift_in_spatial_domain.py
         
 ### Results
 ![alt text](img/shift_spational_domain.png "FT properties: (2) Shift in spatial domain")
@@ -54,7 +54,7 @@ For any real number $\xi_0 \in \mathbb{R}$,
 > $\hat{h}(\xi) = \hat{f}(\xi - \xi_0)$
 
 ### Execution
-        >> demo_fourier_properties_3_shift_in_Fourier_domain.m
+        $ python demo_fourier_properties_3_shift_in_Fourier_domain.py
         
 ### Results
 ![alt text](img/shift_Fourier_domain.png "FT properties: (3) Shift in Fourier domain")
@@ -72,10 +72,10 @@ For any real number $\xi_0 \in \mathbb{R}$,
 where, * is convolution operator and $\cdot$ is element-wise multiplication.
 
 ### Execution for 1D example
-        >> demo_fourier_properties_4_1d_convolution_vs_multiplication.m
+        $ python demo_fourier_properties_4_1d_convolution_vs_multiplication.py
 
 ### Execution for 2D example
-        >> demo_fourier_properties_5_2d_convolution_vs_multiplication.m
+        $ python demo_fourier_properties_5_2d_convolution_vs_multiplication.py
 
 ### Results
 ![alt text](img/conv_theoem_1d.png "FT properties: (4) Convolution theorem for 1D") (a) 1D example
