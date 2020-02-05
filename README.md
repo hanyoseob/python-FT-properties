@@ -3,9 +3,6 @@
 ### Reference
 - https://en.wikipedia.org/wiki/Fourier_transform
 
-### Execution
-        >> demo_fourier_properties_0_all_examples.m
-
 ---
 
 ## 1) Linearity
