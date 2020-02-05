@@ -1,77 +1,82 @@
-# transpose-operator
+# FT-properties
 
-## Reference
-1) Inner product
-    - https://en.wikipedia.org/wiki/Inner_product_space
+### Reference
+- https://en.wikipedia.org/wiki/Fourier_transform
 
-2) Transpose
-    - http://en.wikipedia.org/wiki/Transpose
+### Execution
+        >> demo_fourier_properties_0_all_examples.m
 
-3) Complex conjugate
-    - https://en.wikipedia.org/wiki/Complex_conjugate
+---
 
-### 1) Inner Product definition
-        < X, Y >  = < [x1; x2; ...; xn], [y1; y2; ...; yn] >,  
+## 1) Linearity
+### Reference
+- https://en.wikipedia.org/wiki/Fourier_transform#Linearity
 
-                  = [x1; x2; ...; xn]' * [y1; y2; ...; yn],  
+### Definition
+For any complex numbers $a \in \mathbb{C}$ and $b \in \mathbb{C}$,
 
-                  = SUM_(i=1)^(n) xi * yi,   
+> $h(x) = a*f(x) + b*g(x)$ 
+> $\xleftrightarrow{\mathcal{F}~(\textrm{Fourier transform})}$
+> $\hat{h}(\xi) = a \cdot \hat{f}(\xi) + b \cdot \hat{g}(\xi)$
 
-                  = (x1 * y1) + (x2 * y2) + ... + (xn * yn).
+### Execution
+        >> demo_fourier_properties_1_linearity.m
 
-### 2) Transpose definition
-If `A` satisfies the following relation,   
+### Results
+![alt text](img/linearity.png "FT properties: (1) Linearity")
 
-        < A * X, Y > = < X, AT * Y >,  
+## 2) Shift in Spatial domain
+### Reference
+- https://en.wikipedia.org/wiki/Fourier_transform#Translation_/_time_shifting
 
-then,
+### Definition
+For any real number $x_0 \in \mathbb{R}$,
 
-        AT is transpose of A.
+> $h(x) = f(x-x_0)$ 
+> $\xleftrightarrow{\mathcal{F}~(\textrm{Fourier transform})}$
+> $\hat{h}(\xi) = e^{-2 \pi i x_0 \xi}\hat{f}(\xi)$
 
-### 3) Complex conjugate definition
-        (a + ib)' = (a - ib).
-
-## Transpose for Matrix ver.
-If `A` is defined as follow,
-
-        A in R ^ (M, N),
-
-then,
-
-        AT in R ^ (N, M).
-
-## Transpose for Function ver.
-### 1) [differential function](https://en.wikipedia.org/wiki/Differential_operator)
-
-If `A(x)` is  defined as follow,
-
-        A(x) = x(i+1) - x(i),
+### Execution
+        >> demo_fourier_properties_2_shift_in_spatial_domain.m
         
-then `AT(y)` is that,
+### Results
+![alt text](img/shift_spational_domain.png "FT properties: (2) Shift in spatial domain")
 
-        AT(y) = y(i) - y(i+1).
+## 3) Shift in Fourier domain
+### Reference
+- https://en.wikipedia.org/wiki/Fourier_transform#Modulation_/_frequency_shifting
 
-### 2) [Fourier transform](https://en.wikipedia.org/wiki/Fourier_transform)
+### Definition
+For any real number $\xi_0 \in \mathbb{R}$,
 
-If `A(x)` is Fourier transform,
+> $h(x) = e^{2 \pi i x \xi_0}f(x)$ 
+> $\xleftrightarrow{\mathcal{F}~(\textrm{Fourier transform})}$
+> $\hat{h}(\xi) = \hat{f}(\xi - \xi_0)$
 
-        A(x) = fftn(x)/numel(x),
-
-then `AT(y)` is Inverse Fourier transform,
-          
-        AT(y) = ifftn(y).
-
-### 3) [Radon transform](https://en.wikipedia.org/wiki/Radon_transform) 
-
-If `A(x)` is Radon transform called by `'Projection'`,
-
-        A(x) = radon(x, THETA)
+### Execution
+        >> demo_fourier_properties_3_shift_in_Fourier_domain.m
         
-        where, THETA is degrees vector.
-        
-then `AT(y)` is Inverse Radon transform without Filtration called by `'Backprojection'`, 
+### Results
+![alt text](img/shift_Fourier_domain.png "FT properties: (3) Shift in Fourier domain")
 
-        AT(y) = iradon(y, THETA, 'none', N).
-        
-        where, 'none' is filtration option and N is image size. 
-        
+## 4) Convolution theorem
+### Reference
+- https://en.wikipedia.org/wiki/Fourier_transform#Convolution_theorem
+
+### Definition
+
+> $h(x) = (f*g)(x) = \int_{-\infty}^{\infty}{f(y)g(x-y)dy}$ 
+> $\xleftrightarrow{\mathcal{F}~(\textrm{Fourier transform})}$
+> $\hat{h}(\xi) = \hat{f}(\xi) \cdot \hat{g}(\xi)$
+
+where, * is convolution operator and $\cdot$ is element-wise multiplication.
+
+### Execution for 1D example
+        >> demo_fourier_properties_4_1d_convolution_vs_multiplication.m
+
+### Execution for 2D example
+        >> demo_fourier_properties_5_2d_convolution_vs_multiplication.m
+
+### Results
+![alt text](img/conv_theoem_1d.png "FT properties: (4) Convolution theorem for 1D") (a) 1D example
+![alt text](img/conv_theoem_2d.png "FT properties: (4) Convolution theorem for 2D") (b) 2D example
